@@ -1,23 +1,24 @@
-// FICHIER : consortium/middleware.ts
-// Middleware : protège toutes les pages sauf /login
-
+// middleware.ts
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
-import { supabaseServer } from "@/lib/supabaseServer";
 
 export async function middleware(req) {
-  const supabase = supabaseServer();
-  const { data } = await supabase.auth.getUser();
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req, res });
 
-  const isLogged = !!data.user;
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const isLoginPage = req.nextUrl.pathname.startsWith("/login");
 
-  if (!isLogged && !isLoginPage) {
+  if (!user && !isLoginPage) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  return NextResponse.next();
+  return res;
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|login|favicon.ico).*)"],
+  matcher: ["/((?!_next|api|favicon.ico).*)"],
 };
