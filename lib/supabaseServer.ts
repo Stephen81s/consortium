@@ -1,5 +1,5 @@
-// lib/supabaseServer.ts
-// Client Supabase côté serveur (middleware, actions, etc.)
+// FICHIER : consortium/lib/supabaseServer.ts
+// Client Supabase côté serveur (middleware, server components)
 
 import { createServerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";

@@ -1,10 +1,10 @@
-// middleware.ts
-// Protège toutes les pages sauf /login
+// FICHIER : consortium/middleware.ts
+// Middleware : protège toutes les pages sauf /login
 
 import { NextResponse } from "next/server";
 import { supabaseServer } from "@/lib/supabaseServer";
 
-export async function middleware(req: any) {
+export async function middleware(req) {
   const supabase = supabaseServer();
   const { data } = await supabase.auth.getUser();
 

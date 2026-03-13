@@ -1,12 +1,8 @@
-// app/page.tsx
+// FICHIER : consortium/app/page.tsx
+// Redirection automatique vers /dashboard
 
-// Page d'accueil temporaire
-// On remplacera par l'écran de connexion (citoyen + gouvernement)
+import { redirect } from "next/navigation";
+
 export default function Home() {
-  return (
-    <main style={{ padding: "2rem", color: "white" }}>
-      <h1>Intranet — Consortium</h1>
-      <p>Bienvenue sur la nouvelle base Next.js.</p>
-    </main>
-  );
+  redirect("/dashboard");
 }
