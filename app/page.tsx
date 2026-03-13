@@ -1,8 +1,8 @@
-// FICHIER : consortium/app/page.tsx
-// Redirection automatique vers /dashboard
-
-import { redirect } from "next/navigation";
-
 export default function Home() {
-  redirect("/dashboard");
+  return (
+    <div style={{ padding: 40 }}>
+      <h1>Accueil OK</h1>
+      <p>La redirection viendra après.</p>
+    </div>
+  );
 }
